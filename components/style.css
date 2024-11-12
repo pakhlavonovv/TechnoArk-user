@@ -1,0 +1,34 @@
+.container{
+    width: 97%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* style.css */
+.carousel-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  .map {
+    margin-top: 100px;
+    width: 100% !important;
+    height: 90vh;
+    background-image: url('../public/map.svg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    background-position: center; 
+}
+@media (max-width: 455px) {
+    .map{
+      background-image: none;
+    }
+}
