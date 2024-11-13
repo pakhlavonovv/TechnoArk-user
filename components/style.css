@@ -27,8 +27,4 @@
     background-size: cover; 
     background-position: center; 
 }
-@media (max-width: 455px) {
-    .map{
-      background-image: none;
-    }
-}
+

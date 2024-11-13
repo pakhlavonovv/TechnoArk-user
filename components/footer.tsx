@@ -32,9 +32,9 @@ const Footer = () => {
                 </button>
             </div>
             <h2 className='text-[18px] font-bold'>Mobil ilovani yuklab oling</h2>
-            <div className="flex flex-col min-[450px]:flex-row gap-2 sm:w-[55%]">
-                <button className='w-[50%] h-[60px] bg-[#EBEFF3] flex items-center justify-center gap-2 font-bold'><Image src={AppStore} alt='app store'/>App Store</button>
-                <button className='w-[50%] h-[60px] bg-[#EBEFF3] flex items-center justify-center gap-2 font-bold'><Image src={Playmarket} alt='playmarket store'/>Play market</button>
+            <div className="flex min-[450px]:flex-row gap-2 sm:w-[80%] lg:w-[50%]">
+                <button className='w-[50%] h-[60px] rounded-lg bg-[#EBEFF3] flex items-center justify-center text-[18px] lg:text-[23px] gap-2 font-bold'><Image src={AppStore} alt='app store'/>App Store</button>
+                <button className='w-[50%] h-[60px] rounded-lg bg-[#EBEFF3] flex items-center justify-center text-[18px] lg:text-[23px] gap-2 font-bold'><Image src={Playmarket} alt='playmarket store'/>Play market</button>
             </div>
         </div>
     </footer>

@@ -6,10 +6,11 @@ import Telegram from '../public/logos_telegram.png'
 import Twitter from '../public/twitter.png'
 import Instagram from '../public/instagram (2).png'
 import './style.css'
+import Link from 'next/link'
 
 const Map = () => {
   return (
-    <div className="map flex items-center justify-center lg:items-start p-2 pt-5">
+    <Link href={'https://maps.app.goo.gl/N46dTzV8xHB57YG58'} className="map flex items-center justify-center lg:items-start p-2 pt-5">
       <div className="flex flex-col gap-5 lg:flex-row">
         <div className="w-[90%] h-auto bg-white md:h-[60vh] p-12">
           <div className="flex flex-col gap-2">
@@ -42,7 +43,7 @@ const Map = () => {
           <option>Do‘konlarimizni izlang</option>
         </select>
       </div>
-    </div>
+    </Link>
   )
 }
 

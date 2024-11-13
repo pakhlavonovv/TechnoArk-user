@@ -31,9 +31,9 @@ const Contact = () => {
       </form>
       <div className="mt-3 flex flex-col gap-1">
         <label className="text-black">O‘zingizni fikringizni qoldiring</label>
-        <textarea className="w-full resize-none h-[95px] rounded-md outline-none p-1 bg-[#EBEFF3] lg:w-[60%]"></textarea>
+        <textarea className="w-full resize-none h-[95px] rounded-md outline-none p-1 bg-[#EBEFF3] lg:w-[60%] lg:h-[120px]"></textarea>
       </div>
-      <button className="w-full mt-5 bg-[#15509E] border-[1px] border-[#15509E] h-[42px] rounded-md text-white lg:w-[300px] hover:bg-transparent hover:text-[#15509E]">
+      <button className="w-full mt-5 bg-[#15509E] border-[1px] border-[#15509E] h-[42px] rounded-md text-white lg:w-[250px] hover:bg-transparent hover:text-[#15509E]">
         Yuborish
       </button>
     </div>
