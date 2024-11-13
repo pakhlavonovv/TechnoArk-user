@@ -35,7 +35,7 @@ const Companies = () => {
           <Image className="w-[80px]" src={Huawei} alt="huawei logo" />
         </div>
         <div className="w-[100%] h-[90px] rounded-sm flex items-center justify-center bg-[#E6EDF6]">
-          <Link href="/" className="text-[20px]">Ko&apos;proq</Link>
+          <Link href="/" className="text-[20px]">Ko‘proq</Link>
         </div>
       </div>
     </div>

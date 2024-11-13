@@ -34,7 +34,7 @@ const Footer = () => {
             <h2 className='text-[18px] font-bold'>Mobil ilovani yuklab oling</h2>
             <div className="flex flex-col min-[450px]:flex-row gap-2 sm:w-[55%]">
                 <button className='w-[50%] h-[60px] bg-[#EBEFF3] flex items-center justify-center gap-2 font-bold'><Image src={AppStore} alt='app store'/>App Store</button>
-                <button className='w-[50%] h-[60px] bg-[#EBEFF3] flex items-center justify-center gap-2 font-bold'><Image src={Playmarket} alt='playmarket store'/>App Store</button>
+                <button className='w-[50%] h-[60px] bg-[#EBEFF3] flex items-center justify-center gap-2 font-bold'><Image src={Playmarket} alt='playmarket store'/>Play market</button>
             </div>
         </div>
     </footer>

@@ -39,7 +39,7 @@ const Map = () => {
           </div>
         </div>
         <select className="w-[90%] h-[50px] p-2">
-          <option>Do&apos;konlarimizni izlang</option>
+          <option>Do‘konlarimizni izlang</option>
         </select>
       </div>
     </div>
