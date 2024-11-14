@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './card';
+import Link from 'next/link';
 import Airpods from '../public/airpods.svg'
 import { StaticImageData } from 'next/image';
 interface CardData {
@@ -10,7 +11,7 @@ interface CardData {
   image: string | StaticImageData;
 }
 
-const Home: React.FC = () => {
+const CardsMap: React.FC = () => {
   const cardData: CardData[] = [
     {
       id: 1,
@@ -75,13 +76,14 @@ const Home: React.FC = () => {
         <h1 className='text-[20px] font-bold sm:text-[23px] lg:text-[26px]'>Most popular products</h1>
         <div className="grid grid-cols-1 gap-3 min-[450px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
   {cardData.map((card) => (
-    <Card
-      key={card.id}
-      title={card.title}
-      price={card.price}
-      credit={card.credit}
-      image={card.image}
-    />
+    <Link key={card.id} href={`/products/${card.id}`}>
+      <Card
+        title={card.title}
+        price={card.price}
+        credit={card.credit}
+        image={card.image}
+      />
+  </Link>
   ))}
 </div>
 
@@ -89,4 +91,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default CardsMap;
