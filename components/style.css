@@ -28,3 +28,24 @@
     background-position: center; 
 }
 
+/* Tugmalar o'lchamini kichraytirish */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 20px; /* Tugma kengligi */
+  height: 20px; /* Tugma balandligi */
+  color: white; /* Tugma rangi */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px; 
+}
+
+@media(min-width: 877px){
+  .swiper-button-next{
+    font-size: 20px;
+  }
+  .swiper-button-prev{
+    font-size: 20px;
+  }
+}

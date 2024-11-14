@@ -1,0 +1,48 @@
+import React from 'react';
+import Image, { StaticImageData } from 'next/image';
+
+interface CardProps {
+  title: string;
+  credit: string;
+  image: string | StaticImageData;
+  price: string;
+}
+
+const Card: React.FC<CardProps> = ({ title, image, price, credit }) => {
+  return (
+    <div className="w-full h-[100%] flex flex-col justify-between gap-5 p-4 rounded-lg hover:cursor-pointer group relative">
+    <button className="absolute top-7 right-10 w-8 h-8 flex items-center justify-center bg-white text-gray-500 rounded-full shadow-md hover:bg-red-500 hover:text-white transition-colors duration-300">
+  <i className="fa-solid fa-heart"></i>
+</button>
+<Image
+  className="bg-[#EBEFF3] rounded-lg w-full transition-transform duration-300 group-hover:scale-105"
+  src={image}
+  layout="intrinsic"
+  width={400}
+  height={500}
+  alt="image"
+/>
+
+
+      <div className="flex flex-col gap-5 justify-between">
+        <h1 className='text-[14px] xl:text-[18px]'>{title}</h1>
+        <div className="flex justify-between gap-2 min-[450px]:flex-col min-[686px]:flex-row">
+          <div>
+            <h2 className='font-bold text-[16px] xl:text-[22px]'>{price}</h2>
+            <button className="bg-[#FDEAF4] w-[151px] h-[28px] text-[13px] rounded-md">{credit}</button>
+          </div>
+          <div className="flex gap-2 mt-2">
+            <button className="w-[45px] h-[40px] border-[1px] border-gray-400 rounded-md">
+              <i className="fa-solid fa-book"></i>
+            </button>
+            <button className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
+              <i className="fa-solid fa-cart-shopping"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Card;

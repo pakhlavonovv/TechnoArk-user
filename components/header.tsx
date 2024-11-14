@@ -88,9 +88,9 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="flex items-center gap-5">
-                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-regular fa-heart fa-xl"></i></button>
-                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-solid fa-briefcase fa-xl"></i></button>
-                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-regular fa-user fa-xl"></i></button>
+                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-regular fa-heart fa-lg"></i></button>
+                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-solid fa-briefcase fa-lg"></i></button>
+                        <button className='w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl'><i className="fa-regular fa-user fa-lg"></i></button>
                     </div>
                 </div>
 

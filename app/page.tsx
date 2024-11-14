@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import Carousel from "@/components/carousel";
 import Companies from "@/components/companies";
+import Cards from "@/components/cards_map";
 
 export default function Home() {
   return (
@@ -10,6 +11,8 @@ export default function Home() {
       <Carousel/>
       <br /><br /><br /><br />
       <Companies/>
+      <br /><br /><br />
+      <Cards/>
     </div>
   );
 }
