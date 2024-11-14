@@ -1,12 +1,13 @@
 import React from 'react';
 import Card from './card';
 import Airpods from '../public/airpods.svg'
+import { StaticImageData } from 'next/image';
 interface CardData {
   id: number;
   title: string;
   price: string;
   credit: string;
-  image: string | any;
+  image: string | StaticImageData;
 }
 
 const Home: React.FC = () => {
