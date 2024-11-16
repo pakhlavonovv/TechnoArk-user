@@ -2,6 +2,7 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { StaticImageData } from 'next/image';
 import Image from 'next/image';
+import Airpods from '../../public/airpods.svg';
 
 interface CardData {
   id: number;
@@ -19,7 +20,7 @@ const Product: React.FC<ProductProps> = ({ product }) => {
   const router = useRouter();
 
   if (router.isFallback) {
-    return <div>Loading...</div>; // Fallback holatida yuklanayotganini bildiruvchi matn
+    return <div>Loading...</div>;
   }
 
   return (
@@ -33,13 +34,14 @@ const Product: React.FC<ProductProps> = ({ product }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Array.from({ length: 8 }, (_, index) => ({
-    params: { id: (index + 1).toString() },
-  }));
+  const paths = [
+    { params: { id: '1' } },
+    { params: { id: '2' } },
+  ];
 
   return {
     paths,
-    fallback: true, 
+    fallback: true, // Fallback ishlashiga ruxsat
   };
 };
 
@@ -50,21 +52,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       title: 'Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px',
       price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
-      image: '../../public/airpods.svg  ', 
+      image: Airpods,
     },
     {
       id: 2,
       title: 'Смартфон Xiaomi 12 Lite 8/128Gb Қора kamera 48/68 px',
-      price: '6 999 999 usz ',
+      price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
-      image: '../../public/airpods.svg  ',
+      image: Airpods,
     },
   ];
 
   const product = cardData.find((card) => card.id === Number(params?.id));
 
   if (!product) {
-    return { notFound: true }; 
+    return { notFound: true };
   }
 
   return {
