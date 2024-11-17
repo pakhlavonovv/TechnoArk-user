@@ -40,8 +40,8 @@ const CategoriesImages = () => {
             <button className='w-[130px] p-2 flex items-center justify-center h-[30px] rounded-md border-[1px] text-white bg-transparent'>Muzlatgichlar</button>
             <Image className='w-[50%]' src={Muzlatgich} alt='muzlatgich'/>
         </div>
-        <div className='bg-[#134E9B] h-[70px] rounded-lg flex items-center justify-center'>
-                <Link href={'/'} className='text-[20px] font-bold text-white'>Ko`proq</Link>
+        <div className='bg-[#134E9B] h-[40px] md:h-[60px] rounded-lg flex items-center justify-center'>
+                <Link href={'/'} className='text-[15px] md:text-[18px] font-bold text-white'>Ko`proq</Link>
         </div>
     </div>
   )

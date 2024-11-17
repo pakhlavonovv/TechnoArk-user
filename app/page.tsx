@@ -4,6 +4,8 @@ import Companies from "@/components/companies";
 import Cards from "@/components/cards_map";
 import CategoriesImages from "@/components/categories_images";
 import SaleCards from "@/components/sale_cards";
+import AirpodsAds from "@/components/airpods_ads";
+import RecentlyCards from "@/components/recently_cards";
 
 export default function Home() {
   return (
@@ -17,8 +19,12 @@ export default function Home() {
       <Cards/>
       <br /><br />
       <CategoriesImages/>
-      <br /><br />
+      <br /><br /><br />
       <SaleCards/>
+      <br /><br /><br />
+      <AirpodsAds/>
+      <br /><br /><br />
+      <RecentlyCards/>
     </div>
   );
 }
