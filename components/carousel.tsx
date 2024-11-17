@@ -30,20 +30,18 @@ export default function MySwiper() {
     >
       <SwiperSlide>
         <div className="relative w-full h-full">
-          {/* Tasvir */}
           <Image
             src={Carousel1}
             priority
             alt="Carousel1"
             className="w-full h-auto object-cover"
           />
-          {/* Matn va tugma */}
           <div className="absolute top-1/3 left-10 text-white">
             <h1 className="text-[15px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-bold">Siz kutgan Xiaomi 12 Mi Laite</h1>
             <div className="lg:w-[450px]">
             <p className="text-[12px] sm:text-[15px] md:text-[18px] lg:text-[20px] xl:text-[23px] mt-2">Orginallik va qulay narxni o`zida jamlagan  Xiaomi 12 Mi Laite  siz uchun eng yaxshi arziydigan takliflarimizdan biridir!ii</p>
             </div>
-            <button className="mt-4 w-[80px] h-[30px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
+            <button className="mt-2 w-[100px] h-[25px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
               Batafsil
             </button>
           </div>
@@ -61,7 +59,7 @@ export default function MySwiper() {
             <h1 className="text-[15px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-bold">Siz kutgan Xiaomi 12 Mi Laite</h1>
             <div className="lg:w-[450px]">
             <p className="text-[12px] sm:text-[15px] md:text-[18px] lg:text-[20px] xl:text-[23px] mt-2">Orginallik va qulay narxni o`zida jamlagan  Xiaomi 12 Mi Laite  siz uchun eng yaxshi arziydigan takliflarimizdan biridir!ii</p>
-            </div>            <button className="mt-4 w-[80px] h-[30px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
+            </div>            <button className="mt-2 w-[100px] h-[25px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
               Batafsil
             </button>
           </div>
@@ -79,7 +77,7 @@ export default function MySwiper() {
             <h1 className="text-[15px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-bold">Siz kutgan Xiaomi 12 Mi Laite</h1>
             <div className="lg:w-[450px]">
             <p className="text-[12px] sm:text-[15px] md:text-[18px] lg:text-[20px] xl:text-[23px] mt-2">Orginallik va qulay narxni o`zida jamlagan  Xiaomi 12 Mi Laite  siz uchun eng yaxshi arziydigan takliflarimizdan biridir!ii</p>
-            </div>            <button className="mt-4 w-[80px] h-[30px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
+            </div>            <button className="mt-2 w-[100px] h-[25px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
               Batafsil
             </button>
           </div>
