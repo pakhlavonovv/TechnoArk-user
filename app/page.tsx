@@ -6,6 +6,7 @@ import CategoriesImages from "@/components/categories_images";
 import SaleCards from "@/components/sale_cards";
 import AirpodsAds from "@/components/airpods_ads";
 import RecentlyCards from "@/components/recently_cards";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -25,6 +26,8 @@ export default function Home() {
       <AirpodsAds/>
       <br /><br /><br />
       <RecentlyCards/>
+      <br /><br /><br />
+      <Footer/>
     </div>
   );
 }
