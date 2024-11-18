@@ -26,7 +26,7 @@ export default function MySwiper() {
       }}
       navigation
       modules={[Autoplay, Navigation]}
-      className="mySwiper mySwiper_main bg-[#F3F0F0] w-[90%] h-[100%]"
+      className="mySwiper mySwiper_main w-[90%] h-[100%]"
     >
       <SwiperSlide>
         <div className="relative w-full h-full">
@@ -77,7 +77,7 @@ export default function MySwiper() {
             <h1 className="text-[15px] sm:text-[20px] md:text-[28px] lg:text-[35px] xl:text-[45px] font-bold">Siz kutgan Xiaomi 12 Mi Laite</h1>
             <div className="lg:w-[450px]">
             <p className="text-[12px] sm:text-[15px] md:text-[18px] lg:text-[20px] xl:text-[23px] mt-2">Orginallik va qulay narxni o`zida jamlagan  Xiaomi 12 Mi Laite  siz uchun eng yaxshi arziydigan takliflarimizdan biridir!ii</p>
-            </div>            <button className="mt-2 w-[100px] h-[25px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
+            </div>            <button className="mt-2 w-[80px] h-[25px] sm:w-[150px] sm:h-[40px] bg-blue-500 hover:bg-blue-600 text-white rounded">
               Batafsil
             </button>
           </div>
