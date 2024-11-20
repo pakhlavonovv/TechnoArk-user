@@ -1,37 +1,32 @@
+'use client'
+
+import React from 'react'
+import { useParams } from 'next/navigation'
 import { cardData } from "@/components/cards_map";
 import Image from "next/image";
 
-// export async function genereteStaticParams() {
-//     try {
-//         return cardData.map((pr)=> ({ id: pr.id + "" }))
-//     } catch (error) {
-//         console.log("Error", error)
-//         return [];
-//     }
-// }
-export async function generateMetadata({params} : {params: {id: string}}){
-    const findProduct = cardData.find((card)=> card.id === Number(params?.id))
-    return {
-        title: findProduct?.title,
-        description: `TechnoArk - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt officia deleniti nesciunt perspiciatis sunt error quibusdam accusantium corrupti dignissimos similique eum sed quasi minus impedit commodi excepturi, tempora saepe quidem!`
-    };
-}
+const Page = () => {
+    const { id } = useParams();    
+    const card = cardData.find((item) => item.id.toString() === id);
 
-const Product = async ({params}: {params: {id: string}}) => {
-    const findProduct = cardData.find(card => card.id === Number(params?.id))
+    if (!card) {
+        return <div>Product not found</div>;
+    }
+
     return (
-        <div className="container mx-auto pt-4">
-            {findProduct ? (
-                <div className="flex flex-col items-center gap-2">
-                    <h1 className="text-3xl font-bold">{findProduct?.title}</h1>
-                        <p className="text-lg font-medium">Price: {findProduct?.price}</p>
-                        <p className="text-lg font-medium">Credit: {findProduct?.credit}</p>
-                        <Image width={500} src={findProduct?.image} alt={findProduct?.title}/>
+        <div className="container">
+            <h1 className="text-[20px] font-bold sm:text-[23px] lg:text-[26px]">{card.title}</h1>
+            <div className="product-details">
+                <div className="image">
+                    <Image src={card.image} alt={card.title} width={300} height={300} />
                 </div>
-            ) : (
-                "Product not found"
-            )}
+                <div className="details">
+                    <p><strong>Price:</strong> {card.price}</p>
+                    <p><strong>Credit:</strong> {card.credit}</p>
+                </div>
+            </div>
         </div>
-    )
-}
-export default Product
+    );
+};
+
+export default Page;

@@ -26,7 +26,7 @@ export default function MySwiper() {
       }}
       navigation
       modules={[Autoplay, Navigation]}
-      className="mySwiper mySwiper_main w-[90%] h-[100%]"
+      className="mySwiper mySwiper_main w-[85%] h-[90%]"
     >
       <SwiperSlide>
         <div className="relative w-full h-full">
