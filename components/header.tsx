@@ -59,10 +59,10 @@ const Header = () => {
                     <i className="fa-solid fa-bars fa-xl"></i>
                 </div>
                 <div className="hidden items-center gap-4 justify-between lg:flex">
-                    <div className="flex items-center">
+                    <Link href={'/'} className="flex items-center">
                     <Image className='w-[90px] h-[90px]' src={Logo} alt='logo' />
                         <h1 className='text-[#134E9B] text-[24px] font-bold xl:text-[50px]'>Ashyo</h1>
-                    </div>
+                    </Link>
                     <div className="flex items-center gap-2 relative">
                         <button
                             onClick={toggleDropdown}

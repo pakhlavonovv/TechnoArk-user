@@ -20,6 +20,7 @@ const SaleCards: React.FC = () => {
       price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
       image: Airpods,
+      
     },
     {
       id: 2,
@@ -27,6 +28,7 @@ const SaleCards: React.FC = () => {
       price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
       image: Airpods,
+      
     },
     {
       id: 3,
@@ -34,6 +36,7 @@ const SaleCards: React.FC = () => {
       price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
       image: Airpods,
+      
     },
     {
       id: 4,
@@ -41,6 +44,7 @@ const SaleCards: React.FC = () => {
       price: '6 999 999 usz',
       credit: '6 oy / 1 200 000 usz',
       image: Airpods,
+      
     }
   ];
 
