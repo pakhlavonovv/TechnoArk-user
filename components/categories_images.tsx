@@ -11,13 +11,13 @@ import Link from 'next/link';
 
 const CategoriesImages = () => {
   const categories = [
-    { img: Noutbuklar, alt: 'Noutbuklar', bgColor: '#5C4F8C' },
-    { img: KirMashina, alt: 'Kir yuvish mashinasi', bgColor: '#A09188' },
-    { img: Konditsioner, alt: 'Konditsioner', bgColor: '#797C7D' },
-    { img: Televizor, alt: 'Televizor', bgColor: '#CEAF75' },
-    { img: Muzlatgich2, alt: 'Muzlatgich', bgColor: '#888380' },
-    { img: Smartfon, alt: 'Smartfonlar', bgColor: '#676D86' },
-    { img: Muzlatgich, alt: 'Muzlatgich', bgColor: '#888380' },
+    { img: Noutbuklar, alt: 'Noutbuklar' },
+    { img: KirMashina, alt: 'Kir yuvish mashinasi' },
+    { img: Konditsioner, alt: 'Konditsioner' },
+    { img: Televizor, alt: 'Televizor' },
+    { img: Muzlatgich2, alt: 'Muzlatgich' },
+    { img: Smartfon, alt: 'Smartfonlar' },
+    { img: Muzlatgich, alt: 'Muzlatgich' },
   ];
 
   return (
@@ -25,15 +25,13 @@ const CategoriesImages = () => {
       {categories.map((category, index) => (
         <div
           key={index}
-          className={`relative w-full h-[100%] bg-[${category.bgColor}] rounded-lg flex items-center justify-center group transition-all`}
+          className={`relative w-full h-[100%] bg-gray-300 rounded-lg flex items-center justify-center group transition-all`}
         >
-          {/* Tasvir */}
           <Image
             className="w-[50%] md:w-[60%] xl:w-[60%] transition-transform group-hover:scale-110"
             src={category.img}
             alt={category.alt}
           />
-          {/* Hover effekti */}
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all flex items-center justify-center">
             <Link
               href="/"
