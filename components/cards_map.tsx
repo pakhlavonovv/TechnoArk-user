@@ -77,7 +77,7 @@ const CardsMap: React.FC = () => {
       <h1 className="text-[20px] font-bold sm:text-[23px] lg:text-[26px]">Most popular products</h1>
       <div className="grid grid-cols-1 gap-3 min-[450px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {cardData.map((card) => (
-          <Link key={card.id} href={`/products/`}>
+          <Link key={card.id} href={`/products/${card.id}`}>
             <Card title={card.title} price={card.price} credit={card.credit} image={card.image} />
           </Link>
         ))}
