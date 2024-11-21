@@ -52,7 +52,10 @@ const Page = () => {
                 </div>
                 </div>
                 </div>
-
+                <div className="flex flex-col items-center justify-center gap-2">
+                <button className='bg-[#7000FF] hover:bg-[#6f00ffe0] w-[200px] p-2 text-white rounded-md h-[40px]'>Описание</button>
+                <p>{card.more_info}</p>
+                </div>
             </div>
             <br /><br />
             <SaleCards/>
