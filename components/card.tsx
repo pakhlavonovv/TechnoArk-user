@@ -14,13 +14,12 @@ const Card: React.FC<CardProps> = ({ title, image, price, credit }) => {
       <button className="absolute top-5 right-8 w-10 h-10 flex items-center justify-center bg-white text-gray-500 rounded-full shadow-md hover:bg-red-500 hover:text-white transition-colors duration-300 z-10">
         <i className="fa-solid fa-heart"></i>
       </button>
-    <div className="bg-[#EBEFF3] h-[100%] md:h-[350px] rounded-lg w-full transition-transform duration-300 group-hover:scale-105 z-0">
+    <div className="bg-[#EBEFF3] p-3 h-[100%] md:h-[350px] rounded-lg w-full transition-transform duration-300 group-hover:scale-105 z-0">
       <Image
-        className="object-cover h-[100%]"
+        className="object-contain h-[100%]"
         src={image}
-        // layout="intrinsic"
         width={400}
-        // height={500}
+        height={500}
         alt="image"
       />
     </div>

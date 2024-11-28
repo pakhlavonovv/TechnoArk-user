@@ -1,5 +1,5 @@
 .container{
-    width: 97%;
+    width: 95%;
     margin: 0 auto;
     padding: 15px;
 }
@@ -40,6 +40,8 @@
 .swiper-button-prev::after {
   font-size: 16px; 
 }
+
+
 
 @media(min-width: 877px){
   .swiper-button-next{
