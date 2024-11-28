@@ -34,7 +34,7 @@ const Page = () => {
 
     useEffect(() => {
         getData();
-    }, []);
+    }, [getData]);
 
     if (!product) {
         return (
@@ -68,7 +68,7 @@ const Page = () => {
                    </div>
                    <div className="flex flex-col items-center justify-center gap-3 md:w-[45%] lg:items-start lg:justify-start">
                    <p className="text-xl font-semibold md:text-[24px]">Narxi: {product.price} uzs</p>
-                   <button className='bg-[#c7d8e9] w-[100%] min-[425px]:w-[340px] md:w-full h-[60px] rounded-md'> {Math.floor(Number(product.price) / 12)} 000 ga 12 oyga muddatli to'lov</button>
+                   <button className='bg-[#c7d8e9] w-[100%] min-[425px]:w-[340px] md:w-full h-[60px] rounded-md'> {Math.floor(Number(product.price) / 12)} 000 ga 12 oyga muddatli to`lov</button>
                    <div className="flex flex-col items-center justify-center w-full lg:flex-row gap-2">
                    <button className='w-full rounded-md h-[50px] min-[425px]:w-[340px] lg:w-[400px] border-[1px] border-black'>Savatga qo`shish</button>
                    <button className='w-full rounded-md h-[50px] min-[425px]:w-[340px] lg:w-[400px] border-[1px] border-blue-500 bg-blue-500 text-white transition-all hover:bg-transparent hover:text-blue-500'>Xarid qilish</button>

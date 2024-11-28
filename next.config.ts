@@ -5,8 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['texnoark.ilyosbekdev.uz', 'ecomapi.ilyosbekdev.uz'], 
   },
-  reactStrictMode: true, 
-  swcMinify: true, 
+  reactStrictMode: true
 };
 
 export default nextConfig;
