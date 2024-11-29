@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 
 interface CardProps {
-  id: number;
+  id?: number;
   title: string;
   credit: string;
   image: string | StaticImageData;
