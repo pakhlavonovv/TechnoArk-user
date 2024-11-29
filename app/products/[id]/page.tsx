@@ -3,10 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from "next/image";
-import '../../../components/style.css';
 import Header from '@/components/header';
 import RecentlyCards from "@/components/recently_cards";
 import Footer from '@/components/footer';
+import NotFound from '../../../public/not-found.png'
+import DeliveryIcon from '../../../public/delivery.png'
+import ShopIcon from '../../../public/shop.png'
+import ClockIcon from '../../../public/clock.png'
+import '../../../components/style.css';
 
 const Page = () => {
     type ProductType = {
@@ -28,7 +32,7 @@ const Page = () => {
             const data = await response.json();
             setProduct(data.data?.product || null); 
         } catch (error) {
-            console.error('Error fetching product data:', error);
+            console.log('Error fetching product data:', error);
         }
     };
 
@@ -39,10 +43,14 @@ const Page = () => {
     if (!product) {
         return (
             <div>
-                <Header />
-                <div className="container text-center py-10">
-                    <h1 className="text-2xl font-bold">Mahsulot topilmadi!</h1>
+                <Header /><br />
+                <div className="container flex flex-col items-center justify-center text-center py-10">
+                    <Image className='w-[40%] sm:w-[30%] lg:w-[20%] xl:w-[14%]' src={NotFound} alt='not found image'/>
+                    <h2 className='font-semibold text-[50px] text-gray-400'>404</h2>
+                    <h3 className='font-bold'>NOT FOUND</h3>
+                    <p>The product is not found</p>
                 </div>
+                <br />
                 <Footer />
             </div>
         );
@@ -72,6 +80,20 @@ const Page = () => {
                    <div className="flex flex-col items-center justify-center w-full lg:flex-row gap-2">
                    <button className='w-full rounded-md h-[50px] min-[425px]:w-[340px] lg:w-[400px] border-[1px] border-black'>Savatga qo`shish</button>
                    <button className='w-full rounded-md h-[50px] min-[425px]:w-[340px] lg:w-[400px] border-[1px] border-blue-500 bg-blue-500 text-white transition-all hover:bg-transparent hover:text-blue-500'>Xarid qilish</button>
+                   </div>
+                   <div className="flex flex-col gap-2">
+                    <div className="flex gap-2">
+                        <Image className='w-[25px] h-[25px]' src={DeliveryIcon} alt='Delivery icon'/>
+                        <p>Yetkazib berish O’zbekiston bo’ylab</p>
+                    </div>
+                    <div className="flex gap-2">
+                        <Image className='w-[25px] h-[25px]' src={ShopIcon} alt='Shop icon'/>
+                        <p>Do’kondi o’zidan olib ketishingiz mumkin</p>
+                    </div>
+                    <div className="flex gap-2">
+                        <Image className='w-[25px] h-[25px]' src={ClockIcon} alt='Clock icon'/>
+                        <p>Tahminiy yetkazib berish vaqti 1 kundan 3 kungacha.</p>
+                    </div> 
                    </div>
                 </div>
             </div>

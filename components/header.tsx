@@ -18,6 +18,7 @@ const Header = () => {
         { title: "About us", link: "/about" },
         { title: "Products", link: "/products" },
         { title: "Contacts", link: "/contact" },
+        { title: "Favourites", link: "/favourites" },
     ];
 
     return (
@@ -51,7 +52,7 @@ const Header = () => {
                     </div>
                     <ul className="mt-4">
                         {header_links.map((item) => (
-                            <li key={item.title} className="px-4 py-2  hover:bg-gray-100 text-lg">
+                            <li key={item.title} className="px-4 flex flex-col py-2  hover:bg-gray-100 text-lg">
                                 <Link href={item.link} className="text-[16px]" onClick={toggleSidebar}>
                                     {item.title}
                                 </Link>
@@ -115,9 +116,9 @@ const Header = () => {
                                 <i className="fa-solid fa-magnifying-glass fa-xl text-white"></i>
                             </button>
                         </div>
-                        <button className="w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl">
+                        <Link href={'favourites'} className="w-[60px] h-[60px] flex items-center justify-center bg-[#EBEFF3] rounded-xl">
                             <i className="fa-regular fa-heart fa-lg"></i>
-                        </button>
+                        </Link>
                         <button className="w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl">
                             <i className="fa-solid fa-briefcase fa-lg"></i>
                         </button>
