@@ -23,22 +23,21 @@ const Page = () => {
     const { id } = useParams();
     const [product, setProduct] = useState<ProductType | null>(null); 
 
-    const getData = async () => {
-        try {
-            const response = await fetch(`https://texnoark.ilyosbekdev.uz/products/${id}`);
-            if (!response.ok) {
-                throw new Error(`HTTPS error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            setProduct(data.data?.product || null); 
-        } catch (error) {
-            console.log('Error fetching product data:', error);
-        }
-    };
-
     useEffect(() => {
-        getData();
-    }, [getData]);
+        const getData = async () => {
+            try {
+                const response = await fetch(`https://texnoark.ilyosbekdev.uz/products/${id}`);
+                if (!response.ok) {
+                    throw new Error(`HTTPS error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                setProduct(data.data?.product || null); 
+            } catch (error) {
+                console.log('Error fetching product data:', error);
+            }
+        };
+        getData()
+    }, []);
 
     if (!product) {
         return (

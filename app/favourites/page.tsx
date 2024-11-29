@@ -27,7 +27,7 @@ const LikedProducts: React.FC = () => {
           const res = await fetch('https://texnoark.ilyosbekdev.uz/products/search');
           const data = await res.json();
           const allProducts = data.data?.products || [];
-          const filteredProducts = allProducts.filter((product: any) => likedIds.includes(product.id));
+          const filteredProducts = allProducts.filter((product: Product) => likedIds.includes(product.id));
           setLikedProducts(filteredProducts);
         } catch (error) {
           console.log('Ma`lumotlarni yuklashda xatolik:', error);
