@@ -27,6 +27,19 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
       setIsLiked(true);
     }
   };
+  const handleShop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  
+    const basketProducts = JSON.parse(localStorage.getItem('basketProducts') || '[]');
+    if (!basketProducts.includes(id)) {
+      localStorage.setItem('basketProducts', JSON.stringify([...basketProducts, id]));
+      alert('The product added to basket!');
+    } else {
+      alert('This product is already in the basket!');
+    }
+  };
+  
 
   useEffect(() => {
     const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
@@ -67,7 +80,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
             <button className="w-[45px] h-[40px] border-[1px] border-gray-400 rounded-md">
               <i className="fa-solid fa-book"></i>
             </button>
-            <button className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
+            <button onClick={handleShop} className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
           </div>

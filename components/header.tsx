@@ -6,20 +6,22 @@ import Image from "next/image";
 import "./style.css";
 import Logo from "../public/logo.svg";
 
+
+
+const header_links = [
+    { title: "Tashkent", link: "/" },
+    { title: "About us", link: "/about" },
+    { title: "Products", link: "/products" },
+    { title: "Contacts", link: "/contact" },
+    { title: "My basket", link: "/basket" },
+    { title: "Favourites", link: "/favourites" },
+];
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
-
-    const header_links = [
-        { title: "Tashkent", link: "/" },
-        { title: "About us", link: "/about" },
-        { title: "Products", link: "/products" },
-        { title: "Contacts", link: "/contact" },
-        { title: "Favourites", link: "/favourites" },
-    ];
 
     return (
         <header className="w-full">
@@ -119,9 +121,9 @@ const Header = () => {
                         <Link href={'favourites'} className="w-[60px] h-[60px] flex items-center justify-center bg-[#EBEFF3] rounded-xl">
                             <i className="fa-regular fa-heart fa-lg"></i>
                         </Link>
-                        <button className="w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl">
+                        <Link href={'basket'} className="w-[60px] h-[60px] flex items-center justify-center bg-[#EBEFF3] rounded-xl">
                             <i className="fa-solid fa-briefcase fa-lg"></i>
-                        </button>
+                        </Link>
                         <button className="w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl">
                             <i className="fa-regular fa-user fa-lg"></i>
                         </button>
