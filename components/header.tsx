@@ -124,9 +124,9 @@ const Header = () => {
                         <Link href={'basket'} className="w-[60px] h-[60px] flex items-center justify-center bg-[#EBEFF3] rounded-xl">
                             <i className="fa-solid fa-briefcase fa-lg"></i>
                         </Link>
-                        <button className="w-[60px] h-[60px] bg-[#EBEFF3] rounded-xl">
+                        <Link href={'/auth'} className="w-[60px] h-[60px] flex items-center justify-center bg-[#EBEFF3] rounded-xl">
                             <i className="fa-regular fa-user fa-lg"></i>
-                        </button>
+                        </Link>
                     </div>
                 </div>
                 </div>

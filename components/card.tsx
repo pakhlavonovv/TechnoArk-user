@@ -12,34 +12,38 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleLike = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation(); 
-
-    const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
-    if (isLiked) {
-      const updatedLikes = likedProducts.filter((productId: number) => productId !== id);
-      localStorage.setItem('likedProducts', JSON.stringify(updatedLikes));
-      setIsLiked(false);
-    } else {
-      localStorage.setItem('likedProducts', JSON.stringify([...likedProducts, id]));
-      setIsLiked(true);
-    }
-  };
-  const handleShop = (e: React.MouseEvent) => {
+  const handleLike = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-  
-    const basketProducts = JSON.parse(localStorage.getItem('basketProducts') || '[]');
-    if (!basketProducts.includes(id)) {
-      localStorage.setItem('basketProducts', JSON.stringify([...basketProducts, id]));
-      alert('The product added to basket!');
-    } else {
-      alert('This product is already in the basket!');
+
+    if (!id) return;
+
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://texnoark.ilyosbekdev.uz/likes/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
+        },
+        body: JSON.stringify({ product_id: id }),
+      });
+
+      if (!response.ok) {
+        const { message } = await response.json();
+        throw new Error(message || 'Failed to like the product');
+      }
+
+      setIsLiked(!isLiked);
+    } catch (error: any) {
+      alert(error.message || 'An error occurred while liking the product');
+    } finally {
+      setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
@@ -52,13 +56,12 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
     <div className="w-full h-[100%] lg:w-[350px] lg:h-[100%] flex flex-col justify-between gap-5 p-4 rounded-lg hover:cursor-pointer group relative transition-transform duration-300">
       <button
         onClick={handleLike}
-        className="absolute top-5 right-8 w-10 h-10 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 z-10 bg-white"
+        disabled={loading}
+        className={`absolute top-5 right-8 w-10 h-10 flex items-center justify-center rounded-full shadow-md transition-colors duration-300 z-10 ${
+          isLiked ? 'bg-white text-red-500' : 'bg-white text-gray-500'
+        }`}
       >
-        <i
-          className={`fa-solid fa-heart transition-colors duration-300 ${
-            isLiked ? 'text-red-500' : 'text-gray-500'
-          }`}
-        ></i>
+        <i className="fa-solid fa-heart"></i>
       </button>
       <div className="bg-[#EBEFF3] p-3 h-[100%] md:h-[350px] rounded-lg w-full transition-transform duration-300 group-hover:scale-105 z-0">
         <Image
@@ -80,7 +83,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
             <button className="w-[45px] h-[40px] border-[1px] border-gray-400 rounded-md">
               <i className="fa-solid fa-book"></i>
             </button>
-            <button onClick={handleShop} className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
+            <button className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
           </div>
