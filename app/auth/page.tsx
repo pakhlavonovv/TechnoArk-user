@@ -84,8 +84,8 @@ const Page = () => {
 
   return (
     <div className="bg-blue-900 w-full h-[100%] pt-4">
-      <div className="container w-full max-w-[100%] md:max-w-[70%] mx-auto flex flex-col items-center justify-center gap-10 h-full">
-        <h1 className="text-[25px] text-white font-sans text-center md:text-[40px]">Register Login Widget</h1>
+      <div className="container w-full max-w-[100%] md:max-w-[80%] lg:max-w-[65%] mx-auto flex flex-col items-center justify-center gap-10 h-full">
+        <h1 className="text-[25px] text-white font-sans text-center md:text-[40px] lg:text-[45px]">Register Login Widget</h1>
         <div className="flex flex-col items-center justify-center lg:flex-row gap-10 w-full">
           <form
             onSubmit={handleLogin}
@@ -113,7 +113,7 @@ const Page = () => {
             {error && <p className="text-red-600">{error}</p>}
             <button
               type="submit"
-              className="w-[100%] h-[45px] text-[18px] bg-blue-800 text-white rounded-md"
+              className="w-[100%] h-[45px] text-[18px] bg-blue-800 transition-colors hover:bg-blue-700 text-white rounded-md"
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Login Now'}
@@ -181,7 +181,7 @@ const Page = () => {
             {error && <p className="text-red-600">{error}</p>}
             <button
               type="submit"
-              className="w-[90%] h-[45px] text-[18px] bg-blue-800 text-white rounded-md"
+              className="w-[100%] h-[45px] text-[18px] bg-blue-800 transition-colors hover:bg-blue-700 text-white rounded-md"
               disabled={loading}
             >
               {loading ? 'Loading...' : 'Register Now'}

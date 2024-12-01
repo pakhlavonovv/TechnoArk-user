@@ -21,36 +21,18 @@ const BasketProducts: React.FC = () => {
   const [showModal, setShowModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
 
-  useEffect(() => {
-    const basketProducts = JSON.parse(localStorage.getItem('basketProducts') || '[]');
 
-    if (basketProducts.length) {
-      async function fetchBasketProducts() {
-        try {
-          const res = await fetch('https://texnoark.ilyosbekdev.uz/products/search');
-          const data = await res.json();
-          const allProducts = data.data?.products || [];
-          const filteredProducts = allProducts.filter((product: Product) =>
-            basketProducts.includes(product.id)
-          );
-          setBasketProducts(filteredProducts);
 
-          const initialQuantities = filteredProducts.reduce(
-            (acc: Record<number, number>, product: Product) => {
-              acc[product.id] = 1;
-              return acc;
-            },
-            {}
-          );
-
-          setQuantities(initialQuantities);
-        } catch (error) {
-          console.log('Ma`lumotlarni yuklashda xatolik:', error);
-        }
-      }
-      fetchBasketProducts();
+  const getBaskets  = async() => {
+    const user_id = localStorage.getItem('user_id')
+      const res = await fetch(`https://texnoark.ilyosbekdev.uz/carts/user/${user_id}`)
+      let data = await res.json()
+      console.log(data.data?.carts || []);
     }
-  }, []);
+  useEffect(()=> {
+    getBaskets()
+  }, [])  
+  
 
   useEffect(() => {
     const newTotal = basketProducts.reduce((acc, product) => {
@@ -69,15 +51,7 @@ const BasketProducts: React.FC = () => {
   };
 
   const deleteProduct = () => {
-    if (productToDelete) {
-      const updatedBasket = basketProducts.filter((product) => product.id !== productToDelete.id);
-      setBasketProducts(updatedBasket);
-      const basketFromStorage = JSON.parse(localStorage.getItem('basketProducts') || '[]');
-      const updatedStorage = basketFromStorage.filter((id: number) => id !== productToDelete.id);
-      localStorage.setItem('basketProducts', JSON.stringify(updatedStorage));
-      setShowModal(false);
-      setProductToDelete(null);
-    }
+    console.log('delete funksiya')
   };
 
   const openModal = (product: Product) => {
@@ -111,7 +85,7 @@ const BasketProducts: React.FC = () => {
     <div>
       <Header />
       <div className="container mt-5">
-        <h1 className="text-[20px] lg:text-[30px] font-bold mb-5">Your Basket</h1>
+        <h1 className="text-[20px] lg:text-[30px] font-bold mb-5">Your Baskets:</h1>
         <hr />
         <br />
         <div className="flex flex-col gap-5">
@@ -162,7 +136,6 @@ const BasketProducts: React.FC = () => {
         </div>
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-5 rounded-lg shadow-lg">

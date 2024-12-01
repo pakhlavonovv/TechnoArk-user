@@ -14,6 +14,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(false);
 
+
   const handleLike = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -39,18 +40,52 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
 
       setIsLiked(!isLiked);
     } catch (error: any) {
-      alert(error.message || 'An error occurred while liking the product');
+        alert(error.message || 'An error with liking products')
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
-    if (likedProducts.includes(id)) {
-      setIsLiked(true);
+  
+  const handleCreate = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  
+    if (!id) {
+      alert('Mahsulot ID mavjud emas!');
+      return;
     }
-  }, [id]);
+  
+    const token = localStorage.getItem('access_token');
+  
+    try {
+      const response = await fetch('https://texnoark.ilyosbekdev.uz/carts/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          product_id: id, 
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorData = await response.json();
+        alert(errorData)
+      }
+  
+      const data = await response.json();
+  
+      if (data.success) {
+        alert('Savatchaga muvaffaqiyatli qo`shildi!');
+      } else {
+        console.log('Savatchaga qo`shishda xatolik yuz berdi!');
+      }
+    } catch (error: any) {
+      alert(error.message || 'error!');
+    }
+  };
+  
 
   return (
     <div className="w-full h-[100%] lg:w-[350px] lg:h-[100%] flex flex-col justify-between gap-5 p-4 rounded-lg hover:cursor-pointer group relative transition-transform duration-300">
@@ -63,9 +98,9 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
       >
         <i className="fa-solid fa-heart"></i>
       </button>
-      <div className="bg-[#EBEFF3] p-3 h-[100%] md:h-[350px] rounded-lg w-full transition-transform duration-300 group-hover:scale-105 z-0">
+      <div className="bg-[#EBEFF3] p-3 h-[90%] md:h-[350px] rounded-lg w-full transition-transform duration-300 group-hover:scale-105 z-0">
         <Image
-          className="object-contain h-[45vh] md:h-[100%]"
+          className="object-contain h-[45vh] md:h-[90%]"
           src={image}
           width={400}
           height={500}
@@ -83,7 +118,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
             <button className="w-[45px] h-[40px] border-[1px] border-gray-400 rounded-md">
               <i className="fa-solid fa-book"></i>
             </button>
-            <button className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
+            <button onClick={handleCreate} className="w-[45px] h-[40px] border-[1px] bg-[#134E9B] rounded-md text-white">
               <i className="fa-solid fa-cart-shopping"></i>
             </button>
           </div>
