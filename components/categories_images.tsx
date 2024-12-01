@@ -4,7 +4,7 @@ import Noutbuklar from '../public/noutbuklar.svg';
 import KirMashina from '../public/kirmoshina.svg';
 import Konditsioner from '../public/konditsioner.svg';
 import Televizor from '../public/televizorlar.svg';
-import Smartfon from '../public/smartfonlar.svg';
+import Smartfon from '../public/infinix.webp';
 import Muzlatgich from '../public/muzlatgich.svg';
 import Muzlatgich2 from '../public/muzlatgich2.svg';
 import Link from 'next/link';
@@ -28,7 +28,7 @@ const CategoriesImages = () => {
           className={`relative w-full h-[100%] bg-gray-300 rounded-lg flex items-center justify-center group transition-all`}
         >
           <Image
-            className="w-[50%] md:w-[60%] xl:w-[60%] transition-transform group-hover:scale-110"
+            className="w-[50%] md:w-[60%] xl:w-[70%] transition-transform group-hover:scale-110"
             src={category.img}
             alt={category.alt}
           />

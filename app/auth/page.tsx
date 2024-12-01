@@ -84,9 +84,9 @@ const Page = () => {
 
   return (
     <div className="bg-blue-900 w-full h-[100%] pt-4">
-      <div className="container w-full max-w-[100%] md:max-w-[80%] lg:max-w-[65%] mx-auto flex flex-col items-center justify-center gap-10 h-full">
+      <div className="container w-full max-w-[100%] md:max-w-[70%] lg:max-w-[50%] xl:max-w-[65%] mx-auto flex flex-col items-center justify-center gap-10 h-full">
         <h1 className="text-[25px] text-white font-sans text-center md:text-[40px] lg:text-[45px]">Register Login Widget</h1>
-        <div className="flex flex-col items-center justify-center lg:flex-row gap-10 w-full">
+        <div className="flex flex-col items-center justify-center xl:flex-row gap-10 w-full">
           <form
             onSubmit={handleLogin}
             className="w-[100%] sm:w-[80%] md:h-[100vh] lg:w-[90%] xl:h-[90vh] bg-white p-10 flex flex-col gap-8 items-center justify-center shadow-md rounded-lg"

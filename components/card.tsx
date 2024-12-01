@@ -14,6 +14,12 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
+    if (likedProducts.includes(id)) {
+      setIsLiked(true);
+    }
+  }, [id]);
 
   const handleLike = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -28,7 +34,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${localStorage.getItem('access_token')}`, 
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
         body: JSON.stringify({ product_id: id }),
       });
@@ -38,25 +44,31 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
         throw new Error(message || 'Failed to like the product');
       }
 
-      setIsLiked(!isLiked);
+      const likedProducts = JSON.parse(localStorage.getItem('likedProducts') || '[]');
+      if (!likedProducts.includes(id)) {
+        likedProducts.push(id);
+        localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+      }
+
+      setIsLiked(true);
     } catch (error: any) {
-        alert(error.message || 'An error with liking products')
+      alert(error.message || 'An error with liking products');
     } finally {
       setLoading(false);
     }
   };
-  
+
   const handleCreate = async (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-  
+
     if (!id) {
       alert('Mahsulot ID mavjud emas!');
       return;
     }
-  
+
     const token = localStorage.getItem('access_token');
-  
+
     try {
       const response = await fetch('https://texnoark.ilyosbekdev.uz/carts/create', {
         method: 'POST',
@@ -65,17 +77,17 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
           Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
-          product_id: id, 
+          product_id: id,
         }),
       });
-  
+
       if (!response.ok) {
         const errorData = await response.json();
-        alert(errorData)
+        alert(errorData);
       }
-  
+
       const data = await response.json();
-  
+
       if (data.success) {
         alert('Savatchaga muvaffaqiyatli qo`shildi!');
       } else {
@@ -85,7 +97,6 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
       alert(error.message || 'error!');
     }
   };
-  
 
   return (
     <div className="w-full h-[100%] lg:w-[350px] lg:h-[100%] flex flex-col justify-between gap-5 p-4 rounded-lg hover:cursor-pointer group relative transition-transform duration-300">

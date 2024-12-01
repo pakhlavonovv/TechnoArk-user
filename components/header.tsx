@@ -25,7 +25,7 @@ const Header = () => {
 
     return (
         <header className="w-full">
-            <div className="container md:hidden">
+            <div className="container min-[800px]:hidden">
                 <div className="flex items-center justify-between p-4">
                     <Image
                         priority
@@ -71,7 +71,7 @@ const Header = () => {
                 )}
             </div>
 
-            <div className="hidden md:flex flex-col bg-[#EBEFF3]">
+            <div className="hidden min-[800px]:flex flex-col bg-[#EBEFF3]">
                 <div className="container flex items-center justify-between p-2">
                     <ul className="flex items-center gap-3">
                         <i className="fa-solid fa-location-dot fa-lg"></i>

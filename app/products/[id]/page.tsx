@@ -153,7 +153,7 @@ const Page = () => {
                 <div className="flex flex-col items-center justify-center gap-3 md:w-[70%] md:items-start">
                     <h1 className="font-bold text-[24px] md:text-[35px]">{product.name}</h1>
                     {product.images[0] && (
-                        <div className='bg-[#EBEFF3] flex items-center w-[80%] justify-center h-[70vh] rounded-md'>
+                        <div className='bg-[#EBEFF3] flex items-center w-[80%] justify-center h-[50vh] lg:h-[70vh] rounded-md'>
                             <Image
                                 src={product.images[0]}
                                 alt={product.name}
@@ -189,7 +189,7 @@ const Page = () => {
             </div>
             <br />
             <div className="container flex flex-col gap-5">
-            <div className="container order-1 lg:order-2 grid grid-cols-4 items-start justify-center gap-3 mt-5">
+            <div className="container order-1 lg:order-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-start justify-center gap-3 mt-5">
                 {commentsList.map((item, index) => (
                     <div key={index} className="flex gap-2">
                         <Image className='w-[50px] h-[50px]' src={CommentMan} alt='comment man'/>
