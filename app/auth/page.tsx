@@ -40,7 +40,7 @@ const Page = () => {
 
       const data = await response.json();
       const { access_token, refresh_token } = data.data?.tokens;
-      const userId = data.data?.id;
+      const userId = data.data?.data?.id;
 
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('refresh_token', refresh_token);

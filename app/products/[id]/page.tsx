@@ -20,12 +20,20 @@ const Page = () => {
         price: string;
         images: string[];
     };
-
+    type UserType = {
+        first_name: string,
+        last_name: string,
+    }
+    interface CommentInterface {
+        comment: string,
+        id:number,
+        user_id: UserType 
+    }
     const { id } = useParams();
     const [product, setProduct] = useState<ProductType | null>(null);
     const [comment, setComment] = useState('');
     const [error, setError] = useState<string | null>(null);
-    const [commentsList, setCommentsList] = useState<{ comment: string; id: number }[]>([]);
+    const [commentsList, setCommentsList] = useState<CommentInterface[]>([]);
 
     const handleGetComment = async () => {
         try {
@@ -104,6 +112,20 @@ const Page = () => {
             }
         };
         getData();
+        const getCommentData = async () => {
+            try {
+                const response = await fetch(`https://texnoark.ilyosbekdev.uz/comment/product/${id}`);
+                if (!response.ok) {
+                    throw new Error(`HTTPS error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log(data)
+                setCommentsList(data.data?.comment)
+            } catch (error) {
+                setError('Mahsulotni olishda xatolik yuz berdi!');
+            }
+        };
+        getCommentData();
         handleGetComment(); 
     }, [id]);
 
@@ -166,13 +188,13 @@ const Page = () => {
                 </div>
             </div>
             <br />
-            <div className="container flex flex-col gap-5 lg:flex-row">
-            <div className="container order-1 lg:order-2 flex flex-col items-start justify-center gap-3 mt-5">
+            <div className="container flex flex-col gap-5">
+            <div className="container order-1 lg:order-2 grid grid-cols-4 items-start justify-center gap-3 mt-5">
                 {commentsList.map((item, index) => (
                     <div key={index} className="flex gap-2">
                         <Image className='w-[50px] h-[50px]' src={CommentMan} alt='comment man'/>
                         <div className="flex flex-col gap-3">
-                            <h2>Evgeniy Viktorovich</h2><hr />
+                            <h2>{item.user_id?.first_name} {item.user_id?.last_name}</h2><hr />
                             <p>{item.comment}</p>
                         </div>
                     </div>

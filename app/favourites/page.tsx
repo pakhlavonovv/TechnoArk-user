@@ -14,9 +14,12 @@ interface Product {
   price: string;
   images: string[];
 }
+interface LikedProducts {
+  product_id: Product
+}
 
 const LikedProducts: React.FC = () => {
-  const [likedProducts, setLikedProducts] = useState<Product[]>([]);
+  const [likedProducts, setLikedProducts] = useState<LikedProducts[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -26,17 +29,17 @@ const LikedProducts: React.FC = () => {
       setError(null);
       try {
         const token = localStorage.getItem('access_token');
-        const cardId = localStorage.getItem('card_id');
+        const userId = localStorage.getItem('user_id');
         console.log(token)
-        if (!token || !cardId) {
+        if (!token || !userId) {
           setError('Token yoki card ID topilmadi!');
           console.log('Token:', token); 
-          console.log('Card ID:', cardId);  
+          console.log('Card ID:', userId);  
           return;
         }
 
-        const cardIdString = String(cardId);
-        const res = await fetch(`https://texnoark.ilyosbekdev.uz/likes/user/likes/${cardIdString}`, {
+        const userIdString = String(userId);
+        const res = await fetch(`https://texnoark.ilyosbekdev.uz/likes/user/likes/${userIdString}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -119,12 +122,12 @@ const LikedProducts: React.FC = () => {
         <div className="grid grid-cols-1 gap-3 min-[450px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {likedProducts.map((product) => (
             <Card
-              key={product.id}
-              id={product.id}
-              title={product.name}
-              price={`${product.price} uzs`}
-              credit={`12 oy / ${(Number(product.price) / 12).toFixed(0)} uzs`}
-              image={product?.images?.[0] || '/iphone.webp'}
+              key={product.product_id?.id}
+              id={product.product_id?.id}
+              title={product.product_id?.name}
+              price={`${product.product_id?.price} uzs`}
+              credit={`12 oy / ${(Number(product.product_id?.price) / 12).toFixed(0)} uzs`}
+              image={product?.product_id?.images?.[0] || '/iphone.webp'}
             />
           ))}
         </div>
