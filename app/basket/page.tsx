@@ -3,15 +3,19 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from '@/components/header';
+import BuyProduct from '@/components/buy_product';
 import Footer from '@/components/footer';
 import Like from '../../public/like.png';
 import '../../components/style.css';
 
-interface Product {
+interface CardInterface {
   id: number;
   name: string;
   price: string;
   images: string[];
+}
+interface Product extends CardInterface {
+  product_id: CardInterface;
 }
 
 const BasketProducts: React.FC = () => {
@@ -20,39 +24,73 @@ const BasketProducts: React.FC = () => {
   const [total, setTotal] = useState<number>(0);
   const [showModal, setShowModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState<Product | null>(null);
-
-
-
-  const getBaskets  = async() => {
-    const user_id = localStorage.getItem('user_id')
-      const res = await fetch(`https://texnoark.ilyosbekdev.uz/carts/user/${user_id}`)
-      let data = await res.json()
-      console.log(data.data?.carts || []);
-    }
-  useEffect(()=> {
-    getBaskets()
-  }, [])  
-  
+  const [isClient, setIsClient] = useState(false);  
+  const getBaskets = async () => {
+    const user_id = localStorage.getItem('user_id');
+    const res = await fetch(`https://texnoark.ilyosbekdev.uz/carts/user/${user_id}`);
+    let data = await res.json();
+    console.log(data.data?.carts[0])
+    setBasketProducts(data.data?.carts || []);
+  };
 
   useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  useEffect(() => {
+    if (isClient) {
+      getBaskets();
+    }
+  }, [isClient]);
+  useEffect(() => {
     const newTotal = basketProducts.reduce((acc, product) => {
-      const quantity = quantities[product.id] || 1;
-      return acc + Number(product.price) * quantity;
+      const quantity = quantities[product.id] ?? 1; 
+      return acc + Number(product.product_id?.price || 0) * quantity; // `price`ni tekshirish
     }, 0);
     setTotal(newTotal);
   }, [quantities, basketProducts]);
+  
+  
+  
+  
+    
+  
 
   const handleQuantityChange = (id: number, increment: boolean) => {
     setQuantities((prev) => {
+      const currentQuantity = prev[id] ?? 1; 
       const newQuantities = { ...prev };
-      newQuantities[id] = increment ? newQuantities[id] + 1 : Math.max(newQuantities[id] - 1, 1);
+      newQuantities[id] = increment ? currentQuantity + 1 : Math.max(currentQuantity - 1, 1);
       return newQuantities;
     });
   };
+  
+  
 
-  const deleteProduct = () => {
-    console.log('delete funksiya')
-  };
+  const deleteProduct = async (cardId: string) => {
+    const token = localStorage.getItem('access_token');
+    try {
+        const response = await fetch(`https://texnoark.ilyosbekdev.uz/carts/delete/${cardId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`, 
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error('Something went wrong');
+        }
+
+        const data = await response.json();
+        console.log('Product deleted successfully:', data);
+        getBaskets();
+    } catch (error) {
+        console.error('Error deleting product:', error);
+    }
+};
+
+
 
   const openModal = (product: Product) => {
     setProductToDelete(product);
@@ -93,15 +131,15 @@ const BasketProducts: React.FC = () => {
             <div key={product.id} className="flex flex-col gap-4 items-center justify-between border-b pb-4 md:flex-row">
               <div className="flex items-center gap-6">
                 <Image
-                  src={product.images?.[0] || '/iphone.webp'}
-                  alt={product.name}
+                  src={product?.product_id?.images?.[0] || '/iphone.webp'}
+                  alt={product.name || 'Product Image'} 
                   width={100}
                   height={100}
                   className="rounded-md"
                 />
                 <div className='flex flex-col gap-2'>
-                  <h2 className="font-bold text-lg">{product.name}</h2>
-                  <p className="text-gray-600">{Number(product.price).toLocaleString()} uzs</p>
+                  <h2 className="font-bold text-lg">{product.product_id?.name}</h2>
+                  <p className="text-gray-600">{Number(product.product_id?.price).toLocaleString()} uzs</p>
                   <button
                     className="bg-gray-200 w-[40px] h-[40px] rounded-md hover:bg-gray-300"
                     onClick={() => openModal(product)}
@@ -137,27 +175,33 @@ const BasketProducts: React.FC = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white p-5 rounded-lg shadow-lg">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-white p-5 rounded-lg shadow-lg">
             <h2 className="text-lg font-sans mb-4">Are you sure you want to delete this product?</h2>
             <div className="flex justify-end gap-2">
-              <button
-                className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded-md"
-                onClick={closeModal}
-              >
-                No
-              </button>
-              <button
-                className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md"
-                onClick={deleteProduct}
-              >
-                Yes
-              </button>
+                <button
+                    className="bg-gray-200 hover:bg-gray-300 text-black px-4 py-2 rounded-md"
+                    onClick={closeModal}
+                >
+                    No
+                </button>
+                <button
+                    className="bg-red-600 hover:bg-red-500 text-white px-4 py-2 rounded-md"
+                    onClick={() => {
+                        if (productToDelete) {
+                            deleteProduct(productToDelete.id.toString());
+                        }
+                        closeModal();
+                    }}
+                >
+                    Yes
+                </button>
             </div>
-          </div>
         </div>
-      )}
+    </div>
+)}
 
+    <BuyProduct/>
       <Footer />
     </div>
   );
