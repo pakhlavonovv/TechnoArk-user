@@ -128,8 +128,8 @@ const BasketProducts: React.FC = () => {
         <br />
         <div className="flex flex-col gap-5">
           {basketProducts.map((product) => (
-            <div key={product.id} className="flex flex-col gap-4 items-center justify-between border-b pb-4 md:flex-row">
-              <div className="flex items-center gap-6">
+            <div key={product.id} className="flex flex-col sm:flex-row gap-4 items-center justify-between border-b pb-4 md:flex-row">
+              <div className="flex flex-col sm:flex-row items-center gap-6">
                 <Image
                   src={product?.product_id?.images?.[0] || '/iphone.webp'}
                   alt={product.name || 'Product Image'} 
@@ -137,7 +137,7 @@ const BasketProducts: React.FC = () => {
                   height={100}
                   className="rounded-md"
                 />
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col items-center sm:items-start gap-2'>
                   <h2 className="font-bold text-lg">{product.product_id?.name}</h2>
                   <p className="text-gray-600">{Number(product.product_id?.price).toLocaleString()} uzs</p>
                   <button

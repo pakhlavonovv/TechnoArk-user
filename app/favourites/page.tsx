@@ -119,7 +119,7 @@ const LikedProducts: React.FC = () => {
         <h1 className="text-[20px] lg:text-[30px] font-bold mb-5">Favourites Products</h1>
         <hr />
         <br />
-        <div className="grid grid-cols-1 gap-3 min-[450px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 min-[450px]:grid-cols-2 min-[1100px]:grid-cols-3 xl:grid-cols-4">
           {likedProducts.map((product) => (
             <Card
               key={product.product_id?.id}

@@ -27,12 +27,14 @@ const Header = () => {
         <header className="w-full">
             <div className="container min-[800px]:hidden">
                 <div className="flex items-center justify-between p-4">
+                    <Link href={'/'}>
                     <Image
                         priority
                         className="w-[50px] h-[50px]"
                         src={Logo}
                         alt="logo img"
                     />
+                    </Link>
                     <h2 className="font-bold">+998 (71) 123-45-67</h2>
                     <i
                         className="fa-solid fa-bars fa-xl cursor-pointer"

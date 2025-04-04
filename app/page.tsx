@@ -12,17 +12,16 @@ export default function Home() {
   return (
     <div>
       <Header/>
-      <br />
       <Carousel/>
-      <br /><br /><br /><br />
-      <Companies/>
-      <br /><br /><br />
-      <Cards/>
       <br /><br />
+      <Companies/>
+      <br /><br />
+      <Cards/>
+      <br />
       <CategoriesImages/>
-      <br /><br /><br />
+      <br /><br />
       <SaleCards/>
-      <br /><br /><br />
+      <br /><br />
       <AirpodsAds/>
       <br /><br /><br />
       <RecentlyCards/>

@@ -88,11 +88,7 @@ const Card: React.FC<CardProps> = ({ id, title, image, price, credit }) => {
 
       const data = await response.json();
 
-      if (data.success) {
-        alert('Savatchaga muvaffaqiyatli qo`shildi!');
-      } else {
-        console.log('Savatchaga qo`shishda xatolik yuz berdi!');
-      }
+      alert('Mahsulot savatchaga qoshildi')
     } catch (error: any) {
       alert(error.message || 'error!');
     }
